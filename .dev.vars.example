@@ -1,0 +1,4 @@
+# 로컬 `wrangler dev` 용. .dev.vars 로 복사해서 쓰고, .dev.vars 는 커밋하지 않는다.
+NTFY_TOPIC=woko-local-test-change-me
+# 선택: ntfy.sh 액세스 토큰 (계정 기준 rate limit)
+# NTFY_TOKEN=tk_...

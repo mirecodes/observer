@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "woko-watch",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-17",
+  "observability": { "enabled": true },
+  "triggers": {
+    // UTC 기준 5분마다. 일시 정지하려면 [] 로 바꾸고 다시 배포.
+    "crons": ["*/5 * * * *"],
+  },
+  "kv_namespaces": [
+    {
+      "binding": "STATE",
+      "id": "7136430821ed490b967e82c36e1f0617",
+    },
+  ],
+  "vars": {
+    // 입주 희망 구간 (양 끝 포함, yyyy-mm-dd)
+    "TARGET_FROM": "2026-12-10",
+    "TARGET_TO": "2027-02-15",
+    "NTFY_SERVER": "https://ntfy.sh",
+    "LIST_URL": "https://www.woko.ch/unser-angebot/freie-objekte",
+  },
+  // secret: NTFY_TOPIC — `npx wrangler secret put NTFY_TOPIC` 로만 설정
+}
