@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { classifyTiming } from "../src/classify";
-import { isIsoDate, parseAvailableFrom } from "../src/dates";
+import { classifyTiming } from "../src/modules/woko/classify";
+import { isIsoDate, parseAvailableFrom } from "../src/modules/woko/dates";
 
 const timing = (raw: string) => classifyTiming({ availableRaw: raw, availableFrom: parseAvailableFrom(raw) }, "2027-01-01", "2027-02-15");
 

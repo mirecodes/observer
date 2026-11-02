@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseListings } from "../src/parse";
+import { parseListings } from "../src/modules/woko/parse";
 import LIST from "./fixtures/list-20261017.html?raw";
 
 const BASE = "https://www.woko.ch/unser-angebot/freie-objekte";

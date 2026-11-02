@@ -1,0 +1,22 @@
+# 어떤 모듈(src/modules/<이름>)을 돌릴지와 공통 매개변수.
+# 바꾼 뒤 `npx wrangler deploy` 로 반영. 실행 주기(5분)는 wrangler.jsonc 의 crons.
+
+modules:
+  woko:
+    enabled: true   # false 면 아예 돌지 않음
+    notify: true    # false 면 새 항목 알림만 끄고, 감지·상태 점검·점검 요청은 계속
+    staleDays: 7    # 이 기간 동안 새 항목이 하나도 없으면 점검 요청 (빼면 끔)
+  amiv:
+    enabled: true
+    notify: true
+    staleDays: 21   # 방학·시험기간엔 이벤트가 뜸해서 길게
+  vis:
+    enabled: true
+    notify: true
+    staleDays: 21
+
+health:
+  failuresBeforeAlert: 6   # 연속 실패가 이만큼 쌓이면 점검 요청 (5분 x 6 = 약 30분)
+  realertHours: 6          # 계속 실패 중이면 이 간격으로 다시 요청
+
+maxSingleAlerts: 5         # 한 번에 새 항목이 이보다 많으면 요약 알림 1건으로

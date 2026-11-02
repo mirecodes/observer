@@ -1,0 +1,2 @@
+# 새 이벤트 알림 우선순위 (1 최저 ~ 5 최고, ntfy 기준. pushover 는 자동 변환)
+priority: 3

@@ -14,22 +14,3 @@ export interface Listing {
   applyUrl?: string; // Bewerben 링크(있을 때만), 절대 URL
   category: Category;
 }
-
-export interface State {
-  version: 1;
-  seen: Record<string, string>; // oid -> 처음 본 ISO 시각
-  // 지시서에 없는 필드: 목록에서 사라진 oid -> 처음 사라진 ISO 시각. 30일 prune 기준.
-  missingSince: Record<string, string>;
-  lastOkAt?: string;
-  consecutiveFailures: number;
-  lastHealthAlertAt?: string;
-}
-
-export interface Config {
-  targetFrom: string;
-  targetTo: string;
-  ntfyServer: string;
-  ntfyTopic: string;
-  ntfyToken?: string; // ntfy.sh 액세스 토큰. 있으면 IP 대신 계정 기준 rate limit
-  listUrl: string;
-}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { classifyCategory } from "../src/classify";
+import { classifyCategory } from "../src/modules/woko/classify";
 
 describe("classifyCategory", () => {
   it("uses data-typ when present", () => {

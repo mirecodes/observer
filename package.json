@@ -6,7 +6,8 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "types": "wrangler types",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "config": "node scripts/build-config.mjs",
+    "typecheck": "npm run config && tsc --noEmit && tsc --noEmit -p test",
     "test": "vitest run",
     "check": "npm run typecheck && npm test && wrangler deploy --dry-run"
   },
@@ -14,7 +15,8 @@
     "@cloudflare/vitest-plugin": "^1.4.4",
     "typescript": "^7.0.2",
     "vitest": "^5.0.5",
-    "wrangler": "^4.151.1"
+    "wrangler": "^4.151.1",
+    "yaml": "^2.9.1"
   },
   "allowScripts": {
     "esbuild@0.28.2": true,

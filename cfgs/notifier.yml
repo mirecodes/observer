@@ -1,0 +1,12 @@
+# 알림을 어디로 보낼지. 바꾼 뒤 `npx wrangler deploy` 로 반영.
+# 비밀값(토픽·토큰·키)은 여기 적지 말고 `npx wrangler secret put <이름>` 으로만 넣는다.
+
+provider: ntfy   # ntfy | pushover
+
+ntfy:
+  server: https://ntfy.sh
+  # secret: NTFY_TOPIC (필수), NTFY_TOKEN (권장)
+
+pushover:
+  # secret: PUSHOVER_TOKEN (앱 API 토큰), PUSHOVER_USER (사용자 키)
+  sound: ""        # 비우면 앱 기본음. 예: pushover, siren, cosmic (pushover.net/api#sounds)

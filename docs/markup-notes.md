@@ -46,3 +46,19 @@
 ## 상세 페이지 (참고)
 `Wann` / `Bis`(종료일) / `Adresse` / `Miete` / 크기 / 연락처 등. 목록에 필요한 정보가 다 있어 매 실행 상세 요청은 하지 않는다.
 상세 fixture에는 게시자 연락처(공개 게시물)가 들어있다 — 공개 저장소에 올릴 거면 지우거나 가린다(테스트에서 쓰지 않음).
+
+# AMIV · VIS 이벤트 소스 메모 (2026-11-02 조사)
+
+HTML 대신 사이트가 쓰는 구조화된 소스를 읽는다.
+
+## AMIV — `https://api.amiv.ethz.ch/events` (공개 Eve REST API, 인증 불필요)
+- `amiv.ethz.ch/en/events`는 이 API를 그린다. 사이트에 보인 22건 = 지금 광고 중 14건 + 지난 이벤트 8건. 지난 이벤트는 새 이벤트 감지와 무관.
+- 필터 `where={"show_website":true,"time_advertising_start":{"$lte":now},"time_advertising_end":{"$gte":now}}`가 사이트의 다가오는 이벤트와 정확히 일치했다. 광고 시작 시각이 비어 있는 이벤트는 0건.
+- 키: `_id`(24자리 hex). 상세 링크 `https://amiv.ethz.ch/en/events/<_id>`.
+- `max_results`는 서버가 50으로 자른다. `projection`으로 필요한 필드만 받는다. `price`는 Rappen(1000 = 10 CHF), 시각은 UTC.
+- fixture: `test/fixtures/amiv-20261102.json`.
+
+## VIS — `https://vis.ethz.ch/en/events/rss.xml` (RSS 2.0)
+- 사이트의 다가오는 이벤트 10건과 RSS item 10건이 같다. 지난 이벤트는 피드에서 빠진다(그래서 0건도 정상).
+- 키: `<link>`(= `<guid isPermaLink="true">`). `<description>`은 이스케이프된 HTML이고 `When: …`, `Where: …`가 앞에 온다. CDATA는 안 쓴다.
+- fixture: `test/fixtures/vis-20261102.xml`.

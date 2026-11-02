@@ -2,3 +2,6 @@
 NTFY_TOPIC=woko-local-test-change-me
 # 선택: ntfy.sh 액세스 토큰 (계정 기준 rate limit)
 # NTFY_TOKEN=tk_...
+# cfgs/notifier.yml 에서 provider: pushover 일 때
+# PUSHOVER_TOKEN=앱-API-토큰-30자
+# PUSHOVER_USER=사용자-키-30자
